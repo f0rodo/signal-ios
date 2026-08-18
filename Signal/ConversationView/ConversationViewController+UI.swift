@@ -183,6 +183,10 @@ extension ConversationViewController {
                 }
             }
 
+            if canOfferCatchMeUp {
+                barButtons.append(makeCatchMeUpBarButtonItem())
+            }
+
             navigationItem.rightBarButtonItems = barButtons
             return
         }

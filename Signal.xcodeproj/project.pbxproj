@@ -4093,6 +4093,16 @@
 		F9FA363629F335E500C13830 /* ProvisioningCipherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FA363529F335E500C13830 /* ProvisioningCipherTests.swift */; };
 		F9FAABD829DB55940004B383 /* Progress+Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FAABD729DB55940004B383 /* Progress+Signal.swift */; };
 		FCB11D8C1A129A76002F93FB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB11D8B1A129A76002F93FB /* CoreMedia.framework */; };
+		0251C813F40BF4CA7FB04D1C /* OnDeviceConversationSummarizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BC7852AC5F85BA7D2553C5 /* OnDeviceConversationSummarizer.swift */; };
+		0A9CC16DD2C7A2C3BF8DBC70 /* CatchMeUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F5D9E0AD0BDDDE92AEB8C2 /* CatchMeUpView.swift */; };
+		0DBBCF7102DA7D489AF0AC9D /* ConversationSummarizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7884A2D28EF8B2F0BDCD02 /* ConversationSummarizer.swift */; };
+		5BDC930FAA20BDB4BB6F7D21 /* ConversationCatchUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CE65335C8BDBFB37DAA82 /* ConversationCatchUpManager.swift */; };
+		6D278B1820E4594BFC12C7FF /* ConversationTranscriptTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6CC8A8CE40B7B83AB50CB9D /* ConversationTranscriptTest.swift */; };
+		798EAE6462DF805864F14F25 /* ConversationViewController+CatchMeUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2E775C9BA5582D1647D517 /* ConversationViewController+CatchMeUp.swift */; };
+		9771924A5692BD786AA7BEB9 /* ConversationTranscriptBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63FA2FEC995F3B9DA08465A /* ConversationTranscriptBuilder.swift */; };
+		AC75E046CD67128E68DD5CBC /* CatchMeUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357FD6E561CDDE788E41E7FA /* CatchMeUpViewModel.swift */; };
+		C7B4B45DEDCB637C4AB9B28B /* CatchMeUpSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD1CCA0DEA5AB22D6B4248 /* CatchMeUpSheetViewController.swift */; };
+		E5DDCE64FB289663CAC5BFDC /* ConversationTranscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F06D4DBC49D4B62F260566 /* ConversationTranscript.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -8484,6 +8494,16 @@
 		FEFD8A174F57F4C221747D51 /* Pods-SignalServiceKitTests.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalServiceKitTests.app store release.xcconfig"; path = "Target Support Files/Pods-SignalServiceKitTests/Pods-SignalServiceKitTests.app store release.xcconfig"; sourceTree = "<group>"; };
 		FF348A86F3FA1E5B5A62F033 /* Pods-SignalNSE.profiling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalNSE.profiling.xcconfig"; path = "Target Support Files/Pods-SignalNSE/Pods-SignalNSE.profiling.xcconfig"; sourceTree = "<group>"; };
 		FF39DCC8D1F7DFD3708276E2 /* Pods-SignalTests.app store release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalTests.app store release.xcconfig"; path = "Target Support Files/Pods-SignalTests/Pods-SignalTests.app store release.xcconfig"; sourceTree = "<group>"; };
+		357FD6E561CDDE788E41E7FA /* CatchMeUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchMeUpViewModel.swift; sourceTree = "<group>"; };
+		5B2E775C9BA5582D1647D517 /* ConversationViewController+CatchMeUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConversationViewController+CatchMeUp.swift"; sourceTree = "<group>"; };
+		8F7884A2D28EF8B2F0BDCD02 /* ConversationSummarizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationSummarizer.swift; sourceTree = "<group>"; };
+		9BFD1CCA0DEA5AB22D6B4248 /* CatchMeUpSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchMeUpSheetViewController.swift; sourceTree = "<group>"; };
+		A63FA2FEC995F3B9DA08465A /* ConversationTranscriptBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTranscriptBuilder.swift; sourceTree = "<group>"; };
+		D5F5D9E0AD0BDDDE92AEB8C2 /* CatchMeUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchMeUpView.swift; sourceTree = "<group>"; };
+		E60CE65335C8BDBFB37DAA82 /* ConversationCatchUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCatchUpManager.swift; sourceTree = "<group>"; };
+		F0BC7852AC5F85BA7D2553C5 /* OnDeviceConversationSummarizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeviceConversationSummarizer.swift; sourceTree = "<group>"; };
+		F1F06D4DBC49D4B62F260566 /* ConversationTranscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTranscript.swift; sourceTree = "<group>"; };
+		F6CC8A8CE40B7B83AB50CB9D /* ConversationTranscriptTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTranscriptTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -8998,6 +9018,7 @@
 				34E93F9126668F7500CE6FA5 /* ConversationViewController+BodyTextItems.swift */,
 				347342F62548587800D440CD /* ConversationViewController+BottomBar.swift */,
 				34A4D8802677B2AB00A794E7 /* ConversationViewController+Calls.swift */,
+				5B2E775C9BA5582D1647D517 /* ConversationViewController+CatchMeUp.swift */,
 				34A4D8842677DF6B00A794E7 /* ConversationViewController+ConversationInputToolbarDelegate.swift */,
 				3470518D254B511B00A19468 /* ConversationViewController+CVC.swift */,
 				34A4D87C2677A1EF00A794E7 /* ConversationViewController+CVComponentDelegate.swift */,
@@ -12249,6 +12270,7 @@
 				50EF82482F8EDB5C000EE0DD /* Spam */,
 				76EB03C118170B33006006FC /* src */,
 				50A76F572AF5762C00FCF02D /* Storage */,
+				FF7E1190DC03A2FA8284420F /* Summarization */,
 				D221A094169C9E5E00537ABF /* Supporting Files */,
 				B660F66C1C29867F00687D6E /* test */,
 				5033D46C29DCA8DE007FEADA /* URLs */,
@@ -14886,6 +14908,7 @@
 				C19001BE2ECE318900D0CBD5 /* Stores */,
 				7255A4C52B98DA2200E95368 /* Stories */,
 				D91A39E62AE2F42000F57A61 /* Subscriptions */,
+				41F53E0143080FB1538ABB62 /* Summarization */,
 				F9C5C8A4289451B900548EEE /* tests */,
 				F9C5CB82289453B200548EEE /* TestUtils */,
 				F9C5C9E3289453B100548EEE /* Threads */,
@@ -14937,6 +14960,7 @@
 				7254655F2BA032C600EABFD2 /* StorageService */,
 				884BF73A28D37D5F00D94636 /* Stories */,
 				7254654E2BA026E700EABFD2 /* Subscriptions */,
+				D374BE402807D828F863F65D /* Summarization */,
 				F945FE4E2984820B00C835C7 /* TestUtils */,
 				D99840C2297A0DC400F7ED6D /* Usernames */,
 				F94261E4289B1B5400460798 /* Util */,
@@ -15869,6 +15893,36 @@
 				F9C9610A29A91026001E4A09 /* ChatServiceAuthTest.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		41F53E0143080FB1538ABB62 /* Summarization */ = {
+			isa = PBXGroup;
+			children = (
+				E60CE65335C8BDBFB37DAA82 /* ConversationCatchUpManager.swift */,
+				8F7884A2D28EF8B2F0BDCD02 /* ConversationSummarizer.swift */,
+				F1F06D4DBC49D4B62F260566 /* ConversationTranscript.swift */,
+				A63FA2FEC995F3B9DA08465A /* ConversationTranscriptBuilder.swift */,
+				F0BC7852AC5F85BA7D2553C5 /* OnDeviceConversationSummarizer.swift */,
+			);
+			path = Summarization;
+			sourceTree = "<group>";
+		};
+		D374BE402807D828F863F65D /* Summarization */ = {
+			isa = PBXGroup;
+			children = (
+				F6CC8A8CE40B7B83AB50CB9D /* ConversationTranscriptTest.swift */,
+			);
+			path = Summarization;
+			sourceTree = "<group>";
+		};
+		FF7E1190DC03A2FA8284420F /* Summarization */ = {
+			isa = PBXGroup;
+			children = (
+				9BFD1CCA0DEA5AB22D6B4248 /* CatchMeUpSheetViewController.swift */,
+				D5F5D9E0AD0BDDDE92AEB8C2 /* CatchMeUpView.swift */,
+				357FD6E561CDDE788E41E7FA /* CatchMeUpViewModel.swift */,
+			);
+			path = Summarization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -18428,6 +18482,9 @@
 				D9E43BF92CC194140001536E /* CallUIAdapter.swift in Sources */,
 				4C21D5D8223AC60F00EF8A77 /* CameraCaptureSession.swift in Sources */,
 				4C46361122EB98EC00185951 /* CameraFirstCaptureSendFlow.swift in Sources */,
+				C7B4B45DEDCB637C4AB9B28B /* CatchMeUpSheetViewController.swift in Sources */,
+				0A9CC16DD2C7A2C3BF8DBC70 /* CatchMeUpView.swift in Sources */,
+				AC75E046CD67128E68DD5CBC /* CatchMeUpViewModel.swift in Sources */,
 				D9EB22212A4B636C00C73E1D /* CGContext+LineDrawing.swift in Sources */,
 				34546F502649989D007C4958 /* ChatColorViewController.swift in Sources */,
 				D94CE91A2F52392F00354DE4 /* ChatListBackupProgressView.swift in Sources */,
@@ -18500,6 +18557,7 @@
 				34E93F9226668F7500CE6FA5 /* ConversationViewController+BodyTextItems.swift in Sources */,
 				347342F72548587900D440CD /* ConversationViewController+BottomBar.swift in Sources */,
 				34A4D8812677B2AB00A794E7 /* ConversationViewController+Calls.swift in Sources */,
+				798EAE6462DF805864F14F25 /* ConversationViewController+CatchMeUp.swift in Sources */,
 				34A4D8852677DF6B00A794E7 /* ConversationViewController+ConversationInputToolbarDelegate.swift in Sources */,
 				3470518E254B511B00A19468 /* ConversationViewController+CVC.swift in Sources */,
 				34A4D87D2677A1EF00A794E7 /* ConversationViewController+CVComponentDelegate.swift in Sources */,
@@ -19454,6 +19512,10 @@
 				7254655C2BA0293900EABFD2 /* ContactSyncAttachmentBuilder.swift in Sources */,
 				F9C5CCE1289453B300548EEE /* ContactThreadFinder.swift in Sources */,
 				F9C5CDCA289453B400548EEE /* ContentProxy.swift in Sources */,
+				5BDC930FAA20BDB4BB6F7D21 /* ConversationCatchUpManager.swift in Sources */,
+				0DBBCF7102DA7D489AF0AC9D /* ConversationSummarizer.swift in Sources */,
+				E5DDCE64FB289663CAC5BFDC /* ConversationTranscript.swift in Sources */,
+				9771924A5692BD786AA7BEB9 /* ConversationTranscriptBuilder.swift in Sources */,
 				500AF3AF2C58366700CB9F4F /* CooperativeTimeout.swift in Sources */,
 				F962B38A293F9F1F00765BD8 /* CRC32.swift in Sources */,
 				D9E6D8802EF0C1200063132C /* CreatePollMessage.swift in Sources */,
@@ -19791,6 +19853,7 @@
 				F9C5CD1C289453B300548EEE /* ObservedDatabaseChanges.swift in Sources */,
 				F9C5CE16289453B400548EEE /* OffMainThreadTimer.swift in Sources */,
 				F9C5CD37289453B300548EEE /* OldSenderKeyStore.swift in Sources */,
+				0251C813F40BF4CA7FB04D1C /* OnDeviceConversationSummarizer.swift in Sources */,
 				6674807C2E32EA52004DA6E9 /* Optional+SSK.swift in Sources */,
 				F9C5CE43289453B400548EEE /* OrderedDictionary.swift in Sources */,
 				F9C5CE1E289453B400548EEE /* OrderedSet.swift in Sources */,
@@ -20443,6 +20506,7 @@
 				50169695291B0627007AD709 /* ContactDiscoveryManagerTest.swift in Sources */,
 				500824D0292741D5005A5DC0 /* ContactDiscoveryV2OperationTest.swift in Sources */,
 				5077B5B82BBC7FE600EF399E /* ContactTest.swift in Sources */,
+				6D278B1820E4594BFC12C7FF /* ConversationTranscriptTest.swift in Sources */,
 				500AF3B12C58385600CB9F4F /* CooperativeTimeoutTest.swift in Sources */,
 				F962B38C293F9F9F00765BD8 /* CRC32Test.swift in Sources */,
 				668A28AF2BF703E100BB29B3 /* CreateV2AttachmentTablesMigrationTest.swift in Sources */,

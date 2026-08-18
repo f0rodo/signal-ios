@@ -1996,6 +1996,51 @@
 /* On the credit/debit card donation screen, a small amount of information text is shown. This is that text. It should (1) instruct users to enter their credit/debit card information (2) tell them that Signal does not collect or store their personal information. */
 "CARD_DONATION_SUBHEADER_TEXT" = "Enter your card details. Signal does not collect or store your personal information.";
 
+/* Accessibility label for the button that summarizes unread messages in a conversation. */
+"CATCH_ME_UP_BUTTON_LABEL" = "Catch me up";
+
+/* Shown when the user has not enabled Apple Intelligence, which is required to summarize messages on-device. */
+"CATCH_ME_UP_ERROR_APPLE_INTELLIGENCE_OFF" = "Turn on Apple Intelligence in iOS Settings to summarize messages on this device.";
+
+/* Shown when the device's hardware cannot summarize messages on-device. */
+"CATCH_ME_UP_ERROR_DEVICE_NOT_ELIGIBLE" = "This device can’t summarize messages on-device.";
+
+/* Shown when generating an on-device summary of unread messages failed for an unexpected reason. */
+"CATCH_ME_UP_ERROR_GENERIC" = "Couldn’t generate a summary.";
+
+/* Shown when the on-device model is still downloading or otherwise not ready yet. */
+"CATCH_ME_UP_ERROR_MODEL_NOT_READY" = "The on-device model isn’t ready yet. Try again in a little while.";
+
+/* Shown when there are no unread text messages to summarize. */
+"CATCH_ME_UP_ERROR_NOTHING_TO_SUMMARIZE" = "There are no unread messages to summarize.";
+
+/* Shown when the on-device model declines to summarize the unread messages. */
+"CATCH_ME_UP_ERROR_REFUSED" = "These messages couldn’t be summarized.";
+
+/* Shown when there are too many unread messages to fit in the on-device model. */
+"CATCH_ME_UP_ERROR_TOO_MANY_MESSAGES" = "There are too many unread messages to summarize at once.";
+
+/* Shown when the on-device model does not support the language the conversation is in. */
+"CATCH_ME_UP_ERROR_UNSUPPORTED_LANGUAGE" = "On-device summaries aren’t available in this language yet.";
+
+/* Shown when the device's operating system is too old to summarize messages on-device. */
+"CATCH_ME_UP_ERROR_UNSUPPORTED_OS" = "Update iOS to summarize messages on this device.";
+
+/* Shown while a summary of unread messages is being generated on the device. */
+"CATCH_ME_UP_LOADING" = "Summarizing on your device…";
+
+/* Footer clarifying that the summary was generated on the user's own device and that summaries can be wrong. */
+"CATCH_ME_UP_ON_DEVICE_FOOTER" = "Generated on your device. Summaries can be wrong — read the messages for anything important.";
+
+/* Header for the list of unread messages that appear to need a reply or action. */
+"CATCH_ME_UP_SECTION_NEEDS_ATTENTION" = "Needs your attention";
+
+/* Header for the list of things that happened in the unread messages. */
+"CATCH_ME_UP_SECTION_WHAT_HAPPENED" = "What happened";
+
+/* Title of the sheet that summarizes unread messages in a conversation. */
+"CATCH_ME_UP_TITLE" = "Catch me up";
+
 /* Title for the 'censorship circumvention country' view. */
 "CENSORSHIP_CIRCUMVENTION_COUNTRY_VIEW_TITLE" = "Select Country";
 
