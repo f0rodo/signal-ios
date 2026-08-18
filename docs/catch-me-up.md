@@ -46,13 +46,29 @@ seen exactly once, by a human — not copied into a summary).
 
 ### Budget
 
-`ConversationTranscriptBuilder.Budget` defaults to 150 lines / 8,000 characters
-total / 1,000 characters per message. The per-message cap stops one pasted wall
-of text from consuming the whole window. When truncation happens the prompt
-says so, so the model doesn't claim to have covered everything.
+The context window is **4,096 tokens in total** — instructions, prompt, schema
+and generated output all share it. That is the binding constraint on this
+whole feature.
 
-These numbers are guesses. Tune them once you can measure real context-window
-failures on a device.
+`ConversationTranscriptBuilder.Budget` defaults to 150 lines / 2,200 estimated
+transcript tokens / 250 tokens per message, leaving room for the instructions
+and the response.
+
+The budget is in **estimated tokens, not characters**, deliberately. Apple's
+ratio is roughly 3-4 characters per token for Latin scripts but about *one
+token per character* for Chinese, Japanese and Korean. A character budget
+therefore undercounts CJK by 3-4x and reliably overflows the window for those
+conversations. `TokenEstimate` charges CJK at ~1 token/character, emoji at 2,
+and everything else at 3 characters/token.
+
+There is no public tokenizer, so these are estimates and will sometimes guess
+low. `ConversationCatchUpManager` handles that: on
+`exceededContextWindowSize` it shrinks the budget by 40% and rebuilds, up to
+twice, before surfacing an error.
+
+These numbers are still guesses. Tune them once you can measure real overflow
+rates on a device — iOS 26.4 added token-usage tracking, which would replace
+the estimator with real numbers.
 
 ### Prompt injection
 
@@ -116,6 +132,21 @@ protocol exists precisely so the UI can be driven without Apple Intelligence.
 prompt rendering, local-user labelling, and newline collapsing. The builder
 itself is untested: it needs a database fixture, which is worth adding once the
 target compiles.
+
+## If summaries need to cover more than fits
+
+Everything above summarizes a single window. For arbitrarily long histories,
+the two standard options are map-reduce (summarize chunks in parallel, then
+merge) and refine (carry a running summary forward through chunks in order).
+For chat, refine is the better fit — conversations are chronological, and the
+research finds refine more accurate than map-reduce on ordered material, at
+the cost of being sequential.
+
+One implementation detail matters more than the choice: **a `LanguageModelSession`
+accumulates every prompt and response in its transcript**, and that transcript
+counts against the same 4,096 tokens. A chunk loop that reuses one session will
+overflow after a few chunks no matter how small each chunk is. Each chunk needs
+a *fresh* session, carrying forward only the running summary text.
 
 ## Deliberately not done
 

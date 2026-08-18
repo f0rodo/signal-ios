@@ -84,6 +84,15 @@ public final class OnDeviceConversationSummarizer: ConversationSummarizer {
             Follow these rules exactly:
             - Base every statement strictly on the transcript you are given. \
             Never invent names, plans, numbers, or events that are not there.
+            - Report only what people actually said. Do not infer how anyone \
+            feels, what they intended, or whether they agreed, unless they said \
+            so outright. "Alice asked about Friday" is right; "Alice is annoyed \
+            about Friday" and "they agreed on Friday" are wrong unless the \
+            words are there.
+            - If a discussion was left open, say it was left open. Do not \
+            supply the conclusion it seemed to be heading toward.
+            - If you are unsure who said something or who a name refers to, \
+            leave it out rather than guessing.
             - Be concise and factual. Do not comment on the summary itself and \
             do not add a preamble.
             - Write in the same language the conversation is written in.

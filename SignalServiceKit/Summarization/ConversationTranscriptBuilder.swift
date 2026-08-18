@@ -11,30 +11,48 @@ import Foundation
 /// which is what powers Catch Me Up.
 public struct ConversationTranscriptBuilder {
 
-    /// Caps on how much conversation we will feed the model.
+    /// Caps on how much conversation we will feed the model in one pass.
     ///
-    /// The on-device model has a small context window shared between the
-    /// instructions, the transcript and the generated response, so we budget
-    /// conservatively and truncate from the *oldest* end: if someone has 400
-    /// unread messages, the most recent ones are the ones worth summarizing.
+    /// The on-device model's context window is 4,096 tokens *in total*, shared
+    /// between the instructions, the transcript and the generated response. So
+    /// the transcript gets a fraction of that, and we truncate from the
+    /// *oldest* end: if someone has 400 unread messages, the recent ones are
+    /// the ones worth summarizing.
+    ///
+    /// The budget is in estimated tokens rather than characters on purpose.
+    /// Characters are not a proxy for tokens across scripts — CJK text costs
+    /// roughly one token per character, about 3x what the same character count
+    /// costs in English — so a character budget silently overshoots the window
+    /// for a large share of the world's conversations. See ``TokenEstimate``.
     public struct Budget {
         public let maxLines: Int
-        public let maxCharacters: Int
+        /// Estimated tokens the whole transcript may occupy.
+        public let maxTranscriptTokens: Int
         /// Messages longer than this are individually clipped, so that one
         /// pasted wall of text can't consume the whole budget.
-        public let maxCharactersPerLine: Int
+        public let maxTokensPerLine: Int
 
         public init(
             maxLines: Int = 150,
-            maxCharacters: Int = 8_000,
-            maxCharactersPerLine: Int = 1_000,
+            maxTranscriptTokens: Int = 2_200,
+            maxTokensPerLine: Int = 250,
         ) {
             self.maxLines = maxLines
-            self.maxCharacters = maxCharacters
-            self.maxCharactersPerLine = maxCharactersPerLine
+            self.maxTranscriptTokens = maxTranscriptTokens
+            self.maxTokensPerLine = maxTokensPerLine
         }
 
         public static let `default` = Budget()
+
+        /// A smaller budget, for retrying after the model reports that the
+        /// context window overflowed anyway.
+        public func reduced(by factor: Double = 0.6) -> Budget {
+            return Budget(
+                maxLines: max(10, Int(Double(maxLines) * factor)),
+                maxTranscriptTokens: max(200, Int(Double(maxTranscriptTokens) * factor)),
+                maxTokensPerLine: maxTokensPerLine,
+            )
+        }
     }
 
     private let contactManager: any ContactsManagerProtocol
@@ -71,7 +89,7 @@ public struct ConversationTranscriptBuilder {
         // backwards lets us stop as soon as the budget is spent instead of
         // loading every unread message in a badly-backlogged thread.
         var reversedLines: [ConversationTranscript.Line] = []
-        var characterCount = 0
+        var tokenCount = 0
         var sawOlderUnreadMessage = false
 
         try finder.enumerateInteractionsForConversationView(
@@ -93,16 +111,20 @@ public struct ConversationTranscriptBuilder {
                 return true
             }
 
+            // Budget the rendered line, not just its body: the sender name and
+            // separator are sent to the model too.
+            let lineTokens = TokenEstimate.tokens(in: line.senderName) + TokenEstimate.tokens(in: line.text) + 2
+
             guard
                 reversedLines.count < self.budget.maxLines,
-                characterCount + line.text.count <= self.budget.maxCharacters
+                tokenCount + lineTokens <= self.budget.maxTranscriptTokens
             else {
                 sawOlderUnreadMessage = true
                 return false
             }
 
             reversedLines.append(line)
-            characterCount += line.text.count
+            tokenCount += lineTokens
             return true
         }
 
@@ -149,7 +171,7 @@ public struct ConversationTranscriptBuilder {
             return nil
         }
 
-        let text = String(rawBody.prefix(budget.maxCharactersPerLine))
+        let text = Self.clipped(rawBody, toTokens: budget.maxTokensPerLine)
 
         let senderName: String
         let isLocalUser: Bool
@@ -173,6 +195,28 @@ public struct ConversationTranscriptBuilder {
             receivedAt: Date(millisecondsSince1970: message.receivedAtTimestamp),
             text: text,
         )
+    }
+
+    /// Clips `text` to roughly `tokenLimit` estimated tokens.
+    ///
+    /// Binary search rather than a character ratio, because the ratio depends
+    /// on the script and a single message can mix scripts.
+    private static func clipped(_ text: String, toTokens tokenLimit: Int) -> String {
+        guard TokenEstimate.tokens(in: text) > tokenLimit else {
+            return text
+        }
+
+        var low = 0
+        var high = text.count
+        while low < high {
+            let mid = (low + high + 1) / 2
+            if TokenEstimate.tokens(in: String(text.prefix(mid))) <= tokenLimit {
+                low = mid
+            } else {
+                high = mid - 1
+            }
+        }
+        return String(text.prefix(low))
     }
 
     private static func conversationName(

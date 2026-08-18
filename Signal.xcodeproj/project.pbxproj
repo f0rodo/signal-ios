@@ -4103,6 +4103,8 @@
 		AC75E046CD67128E68DD5CBC /* CatchMeUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 357FD6E561CDDE788E41E7FA /* CatchMeUpViewModel.swift */; };
 		C7B4B45DEDCB637C4AB9B28B /* CatchMeUpSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFD1CCA0DEA5AB22D6B4248 /* CatchMeUpSheetViewController.swift */; };
 		E5DDCE64FB289663CAC5BFDC /* ConversationTranscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F06D4DBC49D4B62F260566 /* ConversationTranscript.swift */; };
+		1DB10840F62D6F5BBEC727DF /* TokenEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E20D07EA0744D272FAF1CE /* TokenEstimate.swift */; };
+		34C1B76F294ABC10CFB469CC /* TokenEstimateTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1F9D1D83EBB47F9791CB67 /* TokenEstimateTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -8504,6 +8506,8 @@
 		F0BC7852AC5F85BA7D2553C5 /* OnDeviceConversationSummarizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDeviceConversationSummarizer.swift; sourceTree = "<group>"; };
 		F1F06D4DBC49D4B62F260566 /* ConversationTranscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTranscript.swift; sourceTree = "<group>"; };
 		F6CC8A8CE40B7B83AB50CB9D /* ConversationTranscriptTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTranscriptTest.swift; sourceTree = "<group>"; };
+		18E20D07EA0744D272FAF1CE /* TokenEstimate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenEstimate.swift; sourceTree = "<group>"; };
+		CA1F9D1D83EBB47F9791CB67 /* TokenEstimateTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenEstimateTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -15903,6 +15907,7 @@
 				F1F06D4DBC49D4B62F260566 /* ConversationTranscript.swift */,
 				A63FA2FEC995F3B9DA08465A /* ConversationTranscriptBuilder.swift */,
 				F0BC7852AC5F85BA7D2553C5 /* OnDeviceConversationSummarizer.swift */,
+				18E20D07EA0744D272FAF1CE /* TokenEstimate.swift */,
 			);
 			path = Summarization;
 			sourceTree = "<group>";
@@ -15911,6 +15916,7 @@
 			isa = PBXGroup;
 			children = (
 				F6CC8A8CE40B7B83AB50CB9D /* ConversationTranscriptTest.swift */,
+				CA1F9D1D83EBB47F9791CB67 /* TokenEstimateTest.swift */,
 			);
 			path = Summarization;
 			sourceTree = "<group>";
@@ -20316,6 +20322,7 @@
 				725465252BA017EF00EABFD2 /* ThreadUtil.swift in Sources */,
 				50F86FC42AFEFEC20045F58B /* TimeGatedBatch.swift in Sources */,
 				7203F5352D53B83500639949 /* TimeInterval+SSK.swift in Sources */,
+				1DB10840F62D6F5BBEC727DF /* TokenEstimate.swift in Sources */,
 				C14EC1A22BA891D200A4D064 /* TransformingInputStream.swift in Sources */,
 				C1CF83D42B9A207800CDC9C4 /* TransformingOutputStream.swift in Sources */,
 				506395812F2403BE00B2F772 /* TransientOutgoingMessage.swift in Sources */,
@@ -20689,6 +20696,7 @@
 				5011D9702A0429B6000FE8E5 /* ThreadMergerTest.swift in Sources */,
 				50C38CAD2A8EB2610030A731 /* TimeGatedBatchTest.swift in Sources */,
 				50D1EEAE2D95D95A00ADF921 /* TimeIntervalTest.swift in Sources */,
+				34C1B76F294ABC10CFB469CC /* TokenEstimateTest.swift in Sources */,
 				C1F09B9F2BB307E100F9E7F5 /* TransformingInputStreamTests.swift in Sources */,
 				C1E307422BA4D388009F015B /* TransformingOutputStreamTests.swift in Sources */,
 				F972180228DCFDF100113D9F /* TSContactThreadTest.swift in Sources */,

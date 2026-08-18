@@ -55,10 +55,40 @@ public final class ConversationCatchUpManager {
         }
     }
 
+    /// How many times to shrink the transcript and retry when the model says
+    /// the context window overflowed.
+    ///
+    /// Token counts are estimated (the framework exposes no tokenizer), so
+    /// overshooting is expected rather than exceptional. Failing the whole
+    /// summary on the first overflow would turn a recoverable miss into a
+    /// user-visible error.
+    private static let maxOverflowRetries = 2
+
     /// Summarizes everything the user hasn't read in `thread`.
     ///
     /// - Throws: ``ConversationSummarizerError``.
     public func catchUp(thread: TSThread) async throws -> ConversationSummary {
+        var attemptBudget = budget
+
+        for attempt in 0...Self.maxOverflowRetries {
+            let transcript = try buildTranscript(thread: thread, budget: attemptBudget)
+
+            do {
+                return try await summarizer.summarize(transcript)
+            } catch ConversationSummarizerError.transcriptTooLong where attempt < Self.maxOverflowRetries {
+                attemptBudget = attemptBudget.reduced()
+                continue
+            }
+        }
+
+        // Unreachable: the loop either returns or throws on its last attempt.
+        throw ConversationSummarizerError.transcriptTooLong
+    }
+
+    private func buildTranscript(
+        thread: TSThread,
+        budget: ConversationTranscriptBuilder.Budget,
+    ) throws -> ConversationTranscript {
         let builder = ConversationTranscriptBuilder(
             contactManager: contactManager,
             budget: budget,
@@ -76,7 +106,6 @@ public final class ConversationCatchUpManager {
         guard let transcript, !transcript.isEmpty else {
             throw ConversationSummarizerError.nothingToSummarize
         }
-
-        return try await summarizer.summarize(transcript)
+        return transcript
     }
 }
